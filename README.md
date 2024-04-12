@@ -33,8 +33,9 @@ Just clone and install this demo. [cordova-plugin-app-update-DEMO](https://githu
 `cordova plugin add https://github.com/jajazhou/cordova-plugin-android-update --save`
 
 ### ionic + angular capacitor 安装
-npm install https://github.com/jajazhou/cordova-plugin-android-update
-npx cap sync
+> `npm install https://github.com/jajazhou/cordova-plugin-android-update
+
+`npx cap sync
 
 # Usage
 
@@ -70,6 +71,7 @@ appUpdate.checkAppUpdate(onSuccess, onFail, updateUrl, {
 ### ionic + angular 下启动自动检测
 - app.component.ts:
 
+```js
 declare let window: any;
 ...
   checkUpdate() {
@@ -85,13 +87,14 @@ declare let window: any;
       //this.showNotify('onFail', 'error');
     }, updateUrl);
   }
-
+```
 - build.gradle(app)  添加 (更新到androidx库):
+```js
 dependencies {
     ...
   implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
   implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-
+```
 ### versionCode
 
 You can simply get the versionCode from typing those code in `Console`
