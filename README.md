@@ -33,9 +33,10 @@ Just clone and install this demo. [cordova-plugin-app-update-DEMO](https://githu
 `cordova plugin add https://github.com/jajazhou/cordova-plugin-android-update --save`
 
 ### ionic + angular capacitor 安装
-> `npm install https://github.com/jajazhou/cordova-plugin-android-update
-
-`npx cap sync
+```js
+npm install https://github.com/jajazhou/cordova-plugin-android-update
+npx cap sync
+```
 
 # Usage
 
