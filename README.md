@@ -1,5 +1,3 @@
-> 文章版权声明：https://blog.csdn.net/qq_23179075/article/details/86581672
-
 # [cordova-plugin-android-update](https://github.com/azhengyongqin/cordova-plugin-android-update)
 
 App updater for Cordova/PhoneGap
