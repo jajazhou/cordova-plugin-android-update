@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-android-update" version="2.0.2">
+    <name>AppUpdate</name>
+    <description>Cordova App Update</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,update,app,auto,updater</keywords>
+    <dependency id="cordova-plugin-appversion" version="1.0.0" />
+    <js-module src="www/AppUpdate.js" name="AppUpdate">
+        <clobbers target="AppUpdate" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="AppUpdate">
+                <param name="android-package" value="org.apache.cordova.appupdate.CheckAppUpdate"/>
+                <param name="onload" value="true" />  <!-- Must Have -->
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+            <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+             <provider
+                android:name="org.apache.cordova.appupdate.GenericFileProvider"
+                android:authorities="${applicationId}.appupdate.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+                <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/appupdate_paths"/>
+            </provider>
+        </config-file>
+
+        <source-file src="src/android/AuthenticationOptions.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/CheckAppUpdate.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/CheckUpdateThread.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/Constants.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/DownloadApkThread.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/DownloadHandler.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/GenericFileProvider.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/GetRemoteXmlThread.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/MsgBox.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/MsgHelper.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/ParseXmlService.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/UIValues.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/UpdateDialog.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/UpdateManager.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/Utils.java" target-dir="src/org/apache/cordova/appupdate"/>
+        <source-file src="src/android/Version.java" target-dir="src/org/apache/cordova/appupdate"/>
+
+        <source-file src="res/values/appupdate_strings.xml" target-dir="res/values"/>
+        <source-file src="res/values/dialog_style.xml" target-dir="res/values"/>
+
+        <source-file src="res/values-en/appupdate_strings.xml" target-dir="res/values-en"/>
+        <source-file src="res/values-es/appupdate_strings.xml" target-dir="res/values-es"/>
+        <source-file src="res/values-de/appupdate_strings.xml" target-dir="res/values-de"/>
+        <source-file src="res/values-zh/appupdate_strings.xml" target-dir="res/values-zh"/>
+        <source-file src="res/values-fr/appupdate_strings.xml" target-dir="res/values-fr"/>
+        <source-file src="res/values-pt/appupdate_strings.xml" target-dir="res/values-pt"/>
+        <source-file src="res/values-bn/appupdate_strings.xml" target-dir="res/values-bn"/>
+        <source-file src="res/values-ru/appupdate_strings.xml" target-dir="res/values-ru"/>
+        <source-file src="res/values-pl/appupdate_strings.xml" target-dir="res/values-pl"/>
+        <source-file src="res/values-it/appupdate_strings.xml" target-dir="res/values-it"/>
+        <source-file src="res/values-ko/appupdate_strings.xml" target-dir="res/values-ko"/>
+
+        <source-file src="res/layout/layout_dialog_update.xml" target-dir="res/layout"/>
+        <source-file src="res/layout/appupdate_progress.xml" target-dir="res/layout"/>
+
+        <source-file src="res/xml/appupdate_paths.xml" target-dir="res/xml"/>
+
+        <source-file src="res/anim/bottom_menu_enter.xml" target-dir="res/anim"/>
+        <source-file src="res/anim/bottom_menu_exit.xml" target-dir="res/anim"/>
+        <source-file src="res/anim/push_bottom_in.xml" target-dir="res/anim"/>
+        <source-file src="res/anim/push_bottom_out.xml" target-dir="res/anim"/>
+
+        <source-file src="res/drawable/update_version_but_bg.xml" target-dir="res/drawable"/>
+        <source-file src="res/drawable/upgrade_dialog_bg.xml" target-dir="res/drawable"/>
+
+        <source-file src="res/mipmap-xxhdpi/upgrade_dialog_bg.png" target-dir="res/mipmap-xxhdpi"/>
+        
+        <framework src="com.android.support:support-v4:24.1.1+" />
+    </platform>
+</plugin>

@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-android-update",
+  "version": "1.0.1",
+  "description": "自动更新",
+  "cordova": {
+    "id": "cordova-plugin-android-update",
+    "platforms": [
+      "android"
+    ]
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter",
+  "license": "MIT"
+}
